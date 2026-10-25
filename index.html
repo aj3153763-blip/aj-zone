@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AJ ZONE | Layers of Practice</title>
+<style>
+:root{--blue:#0755b8;--sky:#25a7f0;--navy:#0b2854;--pale:#eef7ff;--line:#d7e8fb;--white:#fff}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:linear-gradient(135deg,#f7fbff,#eaf5ff);color:var(--navy)}
+header{background:var(--white);border-bottom:1px solid var(--line);padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:5}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--sky));color:white;display:grid;place-items:center;font-weight:900;font-size:18px;box-shadow:0 6px 18px #0755b833}.brand h1{font-size:22px;margin:0;letter-spacing:1px}.brand small{display:block;color:#4d77a7;margin-top:4px}
+button{border:0;border-radius:12px;padding:12px 18px;font-weight:bold;font-size:15px;cursor:pointer;transition:.2s}button:hover{transform:translateY(-1px)}.primary{background:linear-gradient(100deg,var(--blue),var(--sky));color:white}.secondary{background:#e8f3ff;color:var(--blue);border:1px solid var(--line)}.danger{background:#fff0f0;color:#b42318;border:1px solid #ffd4d4}
+main{max-width:1050px;margin:28px auto;padding:0 16px}.hero{background:white;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 14px 40px #174b8010}.hero h2{font-size:clamp(24px,4vw,36px);margin:0 0 10px}.hero p{color:#58718d;line-height:1.8}.blue{color:var(--blue)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:20px}.card{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px #174b8009}.card h3{margin-top:0}.field{margin:14px 0}.field label{display:block;font-weight:bold;margin-bottom:8px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #c9def4;border-radius:10px;font:inherit;background:#fbfdff;color:var(--navy)}textarea{min-height:80px;resize:vertical}.muted{color:#66809b;font-size:13px;line-height:1.7}.hidden{display:none!important}.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.pill{display:inline-block;padding:6px 10px;background:#eaf5ff;color:var(--blue);border-radius:20px;font-size:13px;font-weight:bold}.question-layout{display:grid;grid-template-columns:1fr 220px;gap:16px}.question-text{font-size:21px;line-height:1.8}.option{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:13px;margin:10px 0;cursor:pointer;background:#fbfdff}.option:has(input:checked){border-color:var(--sky);background:#eff9ff}.option input{margin-top:5px;accent-color:var(--blue)}.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.qnav button{padding:9px 4px;background:#edf5ff;color:var(--blue)}.qnav button.active{background:var(--blue);color:white}.qnav button.done{outline:2px solid #7bc7ff}.score{font-size:42px;font-weight:900;color:var(--blue);margin:8px 0}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:480px}th,td{text-align:right;padding:11px;border-bottom:1px solid var(--line)}th{background:#eff7ff}.footer{text-align:center;padding:24px;color:#6b85a0;font-size:13px}
+@media(max-width:680px){header{padding:12px 4%}.brand h1{font-size:18px}.brand small{font-size:11px}.question-layout{grid-template-columns:1fr}.question-nav{order:2}.hero{padding:20px}.question-text{font-size:19px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="logo">AJ</div><div><h1>AJ ZONE</h1><small>Layers of Practice</small></div></div>
+ <button class="secondary" onclick="showHome()">الرئيسية</button>
+</header>
+<main>
+<section id="home" class="hero">
+ <span class="pill">منصة الاختبارات الإلكترونية</span>
+ <h2>أهلًا بك في <span class="blue">AJ ZONE</span> 💙</h2>
+ <p>تعلّم • تدرّب • انجح — منصة تجريبية لإنشاء الاختبارات وحلّها ومراجعة النتائج.</p>
+ <div class="grid">
+  <div class="card"><h3>🎓 دخول الطالب</h3><p class="muted">اكتب الاسم والرقم التعريفي لبدء الاختبار.</p>
+   <div class="field"><label>اسم الطالب</label><input id="studentName" placeholder="اكتب اسمك"></div>
+   <div class="field"><label>الرقم التعريفي</label><input id="studentId" inputmode="numeric" placeholder="اكتب رقمك التعريفي"></div>
+   <button class="primary" style="width:100%" onclick="startExam()">ابدأ الاختبار ←</button>
+   <p class="muted">للتجربة فقط: لا تدخلي أرقامًا قومية حقيقية. هذه النسخة تحفظ البيانات على هذا الجهاز.</p>
+  </div>
+  <div class="card"><h3>🧑‍🏫 إعداد المعلمة</h3><p class="muted">أضيفي الأسئلة وحددي عدد الأسئلة التي تُسحب عشوائيًا من البنك.</p>
+   <div class="field"><label>رمز لوحة التحكم التجريبي</label><input id="adminPin" type="password" placeholder="الرمز الافتراضي: 1234"></div>
+   <button class="secondary" style="width:100%" onclick="openAdmin()">فتح لوحة التحكم</button>
+   <p class="muted">تنبيه: الرمز في هذه النسخة للتجربة فقط وليس حماية حقيقية.</p>
+  </div>
+ </div>
+</section>
+
+<section id="exam" class="hidden">
+ <div class="hero">
+  <div class="row"><div><span class="pill" id="examBadge">الاختبار</span><h2 id="examTitle">اختبار تجريبي</h2></div><div style="text-align:left"><span class="muted">الوقت المتبقي</span><div><b id="timer" class="blue">20:00</b></div><span class="muted">السؤال <b id="counter">1 / 5</b></span></div></div>
+  <div class="question-layout" style="margin-top:18px">
+   <div class="card"><div class="question-text" id="questionText"></div><div id="answerArea"></div>
+    <div class="row" style="margin-top:18px"><button class="secondary" onclick="moveQuestion(-1)">السابق</button><button class="primary" onclick="moveQuestion(1)">التالي</button></div>
+    <button class="primary" style="width:100%;margin-top:12px" onclick="submitExam()">تسليم الاختبار</button>
+   </div>
+   <div class="card question-nav"><h3>الأسئلة</h3><div id="questionNav" class="qnav"></div><p class="muted">الأزرق الغامق = السؤال الحالي. الإطار = تمت الإجابة.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="result" class="hero hidden">
+ <span class="pill">تم تسليم الاختبار</span><h2>نتيجتك يا <span id="resultName"></span></h2>
+ <div class="score" id="score">0 / 0</div><p id="resultMessage"></p>
+ <div class="row"><button class="primary" onclick="showHome()">العودة للرئيسية</button><button class="secondary" onclick="print()">طباعة النتيجة</button></div>
+</section>
+
+<section id="admin" class="hidden">
+ <div class="hero"><span class="pill">لوحة المعلمة</span><h2>إدارة الاختبار وبنك الأسئلة</h2>
+  <div class="grid">
+   <div class="card"><h3>إعدادات الاختبار والوقت</h3>
+    <div class="field"><label>اسم الاختبار</label><input id="setTitle" value="اختبار تجريبي"></div>
+    <div class="field"><label>عدد الأسئلة التي تظهر للطالب</label><input id="setCount" type="number" min="1" value="5"></div>
+    <div class="field"><label>مدة الامتحان بالدقائق</label><input id="setDuration" type="number" min="1" value="20"></div>
+    <div class="field"><label>موعد فتح الامتحان (اختياري)</label><input id="setStart" type="datetime-local"></div>
+    <div class="field"><label>موعد انتهاء إتاحة الامتحان (اختياري)</label><input id="setEnd" type="datetime-local"></div>
+    <p class="muted">اتركي موعد الفتح والانتهاء فارغين لو عايزة الامتحان متاحًا في أي وقت. المواعيد تُحسب حسب توقيت الجهاز.</p>
+    <button class="primary" onclick="saveSettings()">حفظ الإعدادات</button>
+   </div>
+   <div class="card"><h3>إضافة سؤال جديد</h3>
+    <div class="field"><label>نص السؤال</label><textarea id="newQuestion" placeholder="اكتبي السؤال هنا"></textarea></div>
+    <div class="field"><label>نوع السؤال</label><select id="newType" onchange="changeQuestionType()"><option value="mcq">اختيار من متعدد</option><option value="tf">صح أو غلط</option><option value="essay">مقالي</option></select></div>
+    <div id="choiceFields">
+     <div class="field"><label>الاختيار الأول</label><input id="opt0"></div><div class="field"><label>الاختيار الثاني</label><input id="opt1"></div><div class="field"><label>الاختيار الثالث</label><input id="opt2"></div><div class="field"><label>الاختيار الرابع</label><input id="opt3"></div>
+     <div class="field"><label>رقم الإجابة الصحيحة</label><select id="correct"><option value="0">الأول</option><option value="1">الثاني</option><option value="2">الثالث</option><option value="3">الرابع</option></select></div>
+    </div>
+    <div id="tfFields" class="field hidden"><label>الإجابة الصحيحة</label><select id="tfCorrect"><option value="0">صح</option><option value="1">غلط</option></select></div>
+    <div id="essayFields" class="field hidden"><label>نموذج إجابة (للمراجعة اليدوية)</label><textarea id="essayModel"></textarea></div>
+    <button class="primary" onclick="addQuestion()">إضافة السؤال للبنك</button>
+   </div>
+  </div>
+  <div class="card" style="margin-top:16px"><div class="row"><h3>بنك الأسئلة (<span id="bankCount">0</span>)</h3><button class="secondary" onclick="exportData()">تصدير نسخة احتياطية</button><button class="danger" onclick="resetBank()">مسح البنك</button></div><div id="bankList"></div></div>
+  <div class="card" style="margin-top:16px"><h3>نتائج الطلاب على هذا الجهاز</h3><div id="resultsList"></div></div>
+  <button class="secondary" style="margin-top:14px" onclick="showHome()">العودة للرئيسية</button>
+ </div>
+</section>
+</main>
+<div class="footer">AJ ZONE • Layers of Practice • نسخة تجريبية أولية</div>
+<script>
+const KEY='ajzone_bank_v1', SETTINGS='ajzone_settings_v1', RESULTS='ajzone_results_v1';
+const sample=[
+ {id:1,type:'mcq',text:'ما ناتج 6 × 6؟',options:['20','25','30','36'],correct:3},
+ {id:2,type:'tf',text:'الشمس نجم.',options:['صح','غلط'],correct:0},
+ {id:3,type:'mcq',text:'أيّ مما يلي يُعدّ من الكواكب؟',options:['القمر','المريخ','الشمس','مجرة درب التبانة'],correct:1},
+ {id:4,type:'essay',text:'اكتب جملة قصيرة عن أهمية التعلّم.',model:'إجابة مناسبة من الطالب'},
+ {id:5,type:'mcq',text:'كم عدد أيام الأسبوع؟',options:['5','6','7','8'],correct:2},
+ {id:6,type:'tf',text:'الماء يتجمد عند درجة حرارة صفر مئوية تقريبًا في الظروف المعتادة.',options:['صح','غلط'],correct:0}
+];
+function getBank(){try{return JSON.parse(localStorage.getItem(KEY))||sample.slice()}catch(e){return sample.slice()}}
+function getSettings(){try{return JSON.parse(localStorage.getItem(SETTINGS))||{title:'اختبار تجريبي',count:5}}catch(e){return {title:'اختبار تجريبي',count:5}}}
+function getResults(){try{return JSON.parse(localStorage.getItem(RESULTS))||[]}catch(e){return []}}
+let bank=getBank(),settings=getSettings(),currentStudent=null,examQuestions=[],answers={},index=0,timerInterval=null,deadline=0;
+function saveBank(){localStorage.setItem(KEY,JSON.stringify(bank))}
+function show(id){['home','exam','result','admin'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));window.scrollTo(0,0)}
+function showHome(){show('home')}
+function startExam(){
+ const name=document.getElementById('studentName').value.trim(), sid=document.getElementById('studentId').value.trim();
+ if(!name||!sid){alert('من فضلك اكتبي الاسم والرقم التعريفي.');return}
+ if(bank.length===0){alert('لا توجد أسئلة في البنك بعد.');return}
+ settings=getSettings();const now=Date.now();
+ if(settings.start && now < new Date(settings.start).getTime()){alert('الامتحان لم يُفتح بعد. موعد الفتح: '+new Date(settings.start).toLocaleString('ar-EG'));return}
+ if(settings.end && now > new Date(settings.end).getTime()){alert('انتهى موعد إتاحة هذا الامتحان.');return}
+ currentStudent={name,id:sid};
+ examQuestions=[...bank].sort(()=>Math.random()-.5).slice(0,Math.min(Math.max(1,Number(settings.count)||1),bank.length));
+ answers={};index=0;document.getElementById('examTitle').textContent=settings.title;show('exam');
+ deadline=Date.now()+Math.max(1,Number(settings.duration)||20)*60000;updateTimer();
+ clearInterval(timerInterval);timerInterval=setInterval(updateTimer,1000);renderQuestion()
+}
+function updateTimer(){
+ const left=Math.max(0,Math.ceil((deadline-Date.now())/1000)),m=Math.floor(left/60),s=left%60;
+ document.getElementById('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+ if(left<=0){clearInterval(timerInterval);alert('انتهى وقت الامتحان، سيتم تسليم الإجابات الآن.');submitExam(true)}
+}
+function renderQuestion(){
+ const q=examQuestions[index];document.getElementById('counter').textContent=`${index+1} / ${examQuestions.length}`;
+ document.getElementById('questionText').textContent=q.text;
+ const area=document.getElementById('answerArea');area.innerHTML='';
+ if(q.type==='essay'){const t=document.createElement('textarea');t.placeholder='اكتبي إجابتك هنا...';t.value=answers[q.id]||'';t.oninput=()=>answers[q.id]=t.value;area.appendChild(t)}
+ else q.options.forEach((o,i)=>{const label=document.createElement('label');label.className='option';const input=document.createElement('input');input.type='radio';input.name='answer';input.value=i;input.checked=String(answers[q.id])===String(i);input.onchange=()=>{answers[q.id]=i;renderNav()};label.append(input,document.createTextNode(o));area.appendChild(label)});
+ renderNav()
+}
+function renderNav(){const nav=document.getElementById('questionNav');nav.innerHTML='';examQuestions.forEach((q,i)=>{const b=document.createElement('button');b.textContent=i+1;b.className=(i===index?'active ':'')+(answers[q.id]!==undefined&&answers[q.id]!==''?'done':'');b.onclick=()=>{index=i;renderQuestion()};nav.appendChild(b)})}
+function moveQuestion(d){index=Math.max(0,Math.min(examQuestions.length-1,index+d));renderQuestion()}
+function submitExam(auto=false){
+ if(!auto && !confirm('هل أنت متأكدة من تسليم الاختبار؟'))return;
+ clearInterval(timerInterval);
+ let score=0,gradable=0,essayCount=0;
+ examQuestions.forEach(q=>{if(q.type==='essay'){essayCount++;return}gradable++;if(Number(answers[q.id])===Number(q.correct))score++});
+ const result={name:currentStudent.name,id:currentStudent.id,title:settings.title,score,total:gradable,essayCount,date:new Date().toLocaleString('ar-EG')};
+ const rs=getResults();rs.unshift(result);localStorage.setItem(RESULTS,JSON.stringify(rs));
+ document.getElementById('resultName').textContent=currentStudent.name;
+ document.getElementById('score').textContent=`${score} / ${gradable}`;
+ document.getElementById('resultMessage').textContent=essayCount?`تم تصحيح الأسئلة الموضوعية. لديك ${essayCount} سؤال/أسئلة مقالية تحتاج إلى تصحيح يدوي، لذلك الدرجة المعروضة لا تشملها.`:'تم تصحيح إجاباتك تلقائيًا.';
+ show('result')
+}
+function openAdmin(){if(document.getElementById('adminPin').value!=='1234'){alert('رمز التجربة غير صحيح. الرمز الافتراضي هو 1234.');return}settings=getSettings();document.getElementById('setTitle').value=settings.title;document.getElementById('setCount').value=settings.count;document.getElementById('setDuration').value=settings.duration||20;document.getElementById('setStart').value=settings.start||'';document.getElementById('setEnd').value=settings.end||'';renderBank();renderResults();show('admin')}
+function saveSettings(){
+ const count=Math.max(1,Number(document.getElementById('setCount').value)||1);
+ const duration=Math.max(1,Number(document.getElementById('setDuration').value)||20);
+ const start=document.getElementById('setStart').value,end=document.getElementById('setEnd').value;
+ if(start && end && new Date(start).getTime()>=new Date(end).getTime()){alert('موعد الانتهاء يجب أن يكون بعد موعد الفتح.');return}
+ settings={title:document.getElementById('setTitle').value.trim()||'اختبار',count,duration,start,end};
+ localStorage.setItem(SETTINGS,JSON.stringify(settings));alert('تم حفظ إعدادات الاختبار والوقت على هذا الجهاز.')
+}
+function changeQuestionType(){const t=document.getElementById('newType').value;document.getElementById('choiceFields').classList.toggle('hidden',t!=='mcq');document.getElementById('tfFields').classList.toggle('hidden',t!=='tf');document.getElementById('essayFields').classList.toggle('hidden',t!=='essay')}
+function addQuestion(){
+ const text=document.getElementById('newQuestion').value.trim(),type=document.getElementById('newType').value;if(!text){alert('اكتبي نص السؤال أولًا.');return}
+ let q={id:Date.now(),type,text};
+ if(type==='mcq'){q.options=[0,1,2,3].map(i=>document.getElementById('opt'+i).value.trim());if(q.options.some(x=>!x)){alert('اكتبي الاختيارات الأربعة.');return}q.correct=Number(document.getElementById('correct').value)}
+ if(type==='tf'){q.options=['صح','غلط'];q.correct=Number(document.getElementById('tfCorrect').value)}
+ if(type==='essay'){q.options=[];q.model=document.getElementById('essayModel').value.trim()}
+ bank.push(q);saveBank();document.getElementById('newQuestion').value='';[0,1,2,3].forEach(i=>document.getElementById('opt'+i).value='');renderBank();alert('تمت إضافة السؤال.')}
+function renderBank(){document.getElementById('bankCount').textContent=bank.length;const el=document.getElementById('bankList');if(!bank.length){el.innerHTML='<p class="muted">البنك فارغ.</p>';return}el.innerHTML='<div class="table-wrap"><table><thead><tr><th>السؤال</th><th>النوع</th><th>إجراء</th></tr></thead><tbody>'+bank.map(q=>`<tr><td>${esc(q.text)}</td><td>${q.type==='mcq'?'اختيار من متعدد':q.type==='tf'?'صح أو غلط':'مقالي'}</td><td><button class="danger" onclick="deleteQuestion(${q.id})">حذف</button></td></tr>`).join('')+'</tbody></table></div>'}
+function deleteQuestion(id){if(confirm('حذف هذا السؤال؟')){bank=bank.filter(q=>q.id!==id);saveBank();renderBank()}}
+function resetBank(){if(confirm('مسح بنك الأسئلة بالكامل؟')){bank=[];saveBank();renderBank()}}
+function renderResults(){const rs=getResults(),el=document.getElementById('resultsList');if(!rs.length){el.innerHTML='<p class="muted">لا توجد نتائج حتى الآن.</p>';return}el.innerHTML='<div class="table-wrap"><table><thead><tr><th>الطالب</th><th>الرقم التعريفي</th><th>الاختبار</th><th>الدرجة الموضوعية</th><th>التاريخ</th></tr></thead><tbody>'+rs.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.id)}</td><td>${esc(r.title)}</td><td>${r.score}/${r.total}</td><td>${esc(r.date)}</td></tr>`).join('')+'</tbody></table></div>'}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function exportData(){const data={bank,settings,results:getResults()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='aj-zone-backup.json';a.click();URL.revokeObjectURL(a.href)}
+// Seed the local demo bank on first use only.
+if(!localStorage.getItem(KEY)){localStorage.setItem(KEY,JSON.stringify(sample))}
+</script>
+</body>
+</html>
