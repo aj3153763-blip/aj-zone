@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AJ ZONE | Layers of Practice</title>
+<style>
+:root{--navy:#09265b;--blue:#0755b8;--sky:#2c9de8;--pale:#edf5ff;--line:#cbdcf0;--green:#16a477;--red:#e66a4e;--gold:#d5a900;--ink:#1b2e49}
+*{box-sizing:border-box}body{margin:0;background:#f2f6fb;color:var(--ink);font-family:Tahoma,Arial,sans-serif}
+header{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 4%;position:sticky;top:0;z-index:10}
+.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:7px;background:var(--navy);color:white;display:grid;place-items:center;font-weight:900;font-size:18px}.brand h1{font-size:20px;margin:0;color:var(--navy);letter-spacing:1px}.brand small{display:block;color:#54759b;font-size:11px;margin-top:3px}
+button{font:inherit;border:0;border-radius:4px;padding:11px 17px;cursor:pointer;font-weight:bold}button:disabled{opacity:.45;cursor:not-allowed}.primary{background:var(--navy);color:white}.next{background:var(--green);color:white}.gold{background:var(--gold);color:#fff}.soft{background:#e8f0fa;color:var(--navy);border:1px solid var(--line)}.orange{background:var(--red);color:white}
+main{max-width:1180px;margin:25px auto;padding:0 15px}.screen{display:none}.screen.active{display:block}.panel{background:white;border:1px solid var(--line);border-radius:5px;padding:23px;box-shadow:0 5px 20px #17365d0b}
+h2{color:var(--navy);margin:0 0 16px;font-size:25px}.muted{color:#62758c;line-height:1.8;font-size:14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{border:1px solid var(--line);background:#fff;padding:20px;border-radius:5px}.card h3{margin-top:0;color:var(--navy)}
+label{display:block;font-weight:bold;margin:12px 0 7px}input,textarea,select{width:100%;padding:12px;border:1px solid #c4d3e5;border-radius:3px;font:inherit;background:#fff}textarea{min-height:85px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.brandbar{background:var(--navy);color:#fff;padding:12px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;font-weight:bold}.info-strip{background:#eaf1f9;border:1px solid var(--line);padding:10px 13px;margin:12px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13px}
+.exam-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:12px}.question-area{background:white;border:1px solid var(--line);min-height:430px;padding:20px;display:flex;flex-direction:column}.q-title{font-weight:bold;color:var(--navy);border-bottom:1px solid var(--line);padding-bottom:12px}.q-text{font-size:20px;line-height:2;padding:20px 5px;flex:1}.answer{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #d9e3ee;margin:9px 0;border-radius:3px;cursor:pointer}.answer input{width:auto}.answer:has(input:checked){border-color:var(--sky);background:#eff8ff}
+.side{background:#eaf1fa;border:1px solid var(--line);padding:12px}.timer{text-align:center;font-size:30px;color:var(--navy);font-weight:bold}.legend{display:grid;grid-template-columns:1fr 1fr;gap:7px;font-size:12px;margin:12px 0}.legend span{display:flex;align-items:center;gap:6px}.dot{width:15px;height:15px;display:inline-block;border-radius:2px}.answered{background:var(--green)}.unanswered{background:var(--red)}.partial{background:#4a92cb}.notvisited{background:#fff;border:1px solid #aab8c8}
+.qnav{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:12px}.qnav button{padding:9px 2px;background:#fff;border:1px solid #c3cfdd;color:var(--ink)}.qnav button.answered{background:var(--green);color:white;border-color:var(--green)}.qnav button.unanswered{background:var(--red);color:white;border-color:var(--red)}.qnav button.current{outline:3px solid #8dbce8}.qnav button.review{box-shadow:inset 0 -4px 0 var(--gold)}
+.review-check{display:flex;align-items:center;gap:8px;font-size:13px}.review-check input{width:auto}
+table{width:100%;border-collapse:collapse}th,td{padding:12px;border:1px solid var(--line);text-align:right}th{background:#eaf2fb}.hidden{display:none!important}.notice{background:#fff8e3;border:1px solid #f0d98a;padding:12px;margin:12px 0;color:#624e00}.result-score{font-size:38px;color:var(--blue);font-weight:bold}
+@media(max-width:760px){header{padding:0 12px}.brand h1{font-size:17px}.exam-grid{grid-template-columns:1fr}.side{order:2}.question-area{min-height:350px}.qnav{grid-template-columns:repeat(6,1fr)}main{margin:14px auto}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="logo">AJ</div><div><h1>AJ ZONE</h1><small>Layers of Practice</small></div></div>
+ <button class="soft" onclick="go('home')">الرئيسية</button>
+</header>
+<main>
+<section id="home" class="screen active">
+ <div class="panel">
+  <div class="brandbar"><span>AJ ZONE</span><span>منظومة الاختبارات الإلكترونية</span></div>
+  <h2 style="margin-top:22px">مرحبًا بك في AJ ZONE</h2>
+  <p class="muted">اختاري الاختبار المتاح ثم تابعي خطوات الدخول قبل بدء الإجابة.</p>
+  <div class="grid">
+   <div class="card"><h3>دخول الطالب</h3>
+    <label>اسم الطالب</label><input id="studentName" placeholder="اكتب الاسم">
+    <label>الرقم التعريفي / Username</label><input id="studentId" placeholder="اكتب الرقم التعريفي">
+    <label>كلمة المرور التجريبية</label><input id="studentPass" type="password" placeholder="كلمة المرور">
+    <div class="actions"><button class="primary" onclick="selectExam()">متابعة</button></div>
+   </div>
+   <div class="card"><h3>إعداد المعلمة</h3>
+    <p class="muted">إدارة الاختبار وبنك الأسئلة وإعداد الوقت وعدد الأسئلة.</p>
+    <label>رمز لوحة المعلمة التجريبي</label><input id="adminPin" type="password" placeholder="الرمز التجريبي 1234">
+    <div class="actions"><button class="soft" onclick="openAdmin()">فتح لوحة المعلمة</button></div>
+    <p class="muted">هذه نسخة عرض تجريبية وليست نظامًا آمنًا لتخزين بيانات الطلاب.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="select" class="screen">
+ <div class="panel"><div class="brandbar"><span>AJ ZONE</span><span>اختيار الاختبار</span></div>
+  <h2 style="margin-top:20px">Please Select Exam Event</h2>
+  <table><thead><tr><th>م</th><th>اسم الاختبار</th><th>الوصف</th><th>اختيار</th></tr></thead>
+  <tbody><tr><td>1</td><td id="eventTitle">اختبار تجريبي</td><td>اختبار متاح</td><td><input type="radio" name="event" checked style="width:auto"></td></tr></tbody></table>
+  <div class="actions"><button class="primary" onclick="go('login')">Proceed</button><button class="soft" onclick="go('home')">رجوع</button></div>
+ </div>
+</section>
+
+<section id="login" class="screen">
+ <div class="panel" style="max-width:620px;margin:auto"><div class="brandbar"><span>AJ ZONE</span><span>Candidate Login</span></div>
+  <h2 style="margin-top:20px">تسجيل دخول المرشح</h2>
+  <label>Username</label><input id="loginUser" readonly>
+  <label>Password</label><input id="loginPassword" type="password" placeholder="كلمة المرور">
+  <label>Captcha - رمز التحقق التجريبي</label><div class="grid" style="grid-template-columns:1fr 110px"><input id="captchaInput" placeholder="اكتب الرمز الظاهر"><div class="panel" style="text-align:center;font-size:22px;font-weight:bold;letter-spacing:4px;background:#eef3f9">AJ42</div></div>
+  <div class="actions"><button class="primary" onclick="validateLogin()">Login</button><button class="soft" onclick="go('select')">Back</button></div>
+ </div>
+</section>
+
+<section id="instructions" class="screen">
+ <div class="panel"><div class="brandbar"><span>AJ ZONE</span><span id="instructionExam">الاختبار</span></div>
+  <h2 style="margin-top:20px">Instructions | التعليمات</h2>
+  <div class="grid" style="grid-template-columns:minmax(0,2fr) minmax(210px,1fr)">
+   <div class="card"><p>يرجى قراءة التعليمات التالية بعناية قبل بدء الاختبار:</p>
+    <ol class="muted"><li>تأكد من اسم الاختبار وبياناتك قبل البدء.</li><li>تابع الوقت المتبقي الظاهر على الشاشة.</li><li>استخدم Save &amp; Next لحفظ الإجابة والانتقال للسؤال التالي.</li><li>يمكنك تحديد السؤال للمراجعة والعودة إليه قبل إنهاء الاختبار.</li><li>بعد الانتهاء راجع إجاباتك ثم اختر End Test.</li></ol>
+   </div>
+   <div class="card"><h3>بيانات المرشح</h3><p id="candidateInfo" class="muted"></p></div>
+  </div>
+  <div class="actions"><button class="primary" onclick="go('confirm')">Next</button><button class="soft" onclick="go('login')">Previous</button></div>
+ </div>
+</section>
+
+<section id="confirm" class="screen">
+ <div class="panel"><div class="brandbar"><span>AJ ZONE</span><span>Candidate Information</span></div>
+  <h2 style="margin-top:20px">التأكد من بيانات المرشح</h2>
+  <div class="card"><table><tbody><tr><th>Candidate Name</th><td id="confirmName"></td><th>Candidate Code</th><td id="confirmId"></td></tr><tr><th>Username</th><td id="confirmUser"></td><th>Exam</th><td id="confirmExam"></td></tr></tbody></table></div>
+  <div class="actions"><button class="primary" onclick="go('ready')">Take Test</button><button class="soft" onclick="go('instructions')">Previous</button></div>
+ </div>
+</section>
+
+<section id="ready" class="screen">
+ <div class="panel" style="max-width:720px;margin:auto"><div class="brandbar"><span>AJ ZONE</span><span>Ready to begin</span></div>
+  <h2 style="margin-top:20px">أنا مستعد للبدء</h2><p class="muted">تأكد من جاهزيتك قبل بدء احتساب وقت الاختبار.</p>
+  <label class="review-check"><input id="readyCheck" type="checkbox"> I am ready to begin</label>
+  <div class="actions"><button class="gold" onclick="beginExam()">I am ready to begin</button><button class="soft" onclick="go('confirm')">Cancel</button></div>
+ </div>
+</section>
+
+<section id="exam" class="screen">
+ <div class="brandbar"><span>AJ ZONE</span><span id="examTitleBar">الاختبار</span><span>Layers of Practice</span></div>
+ <div class="info-strip"><span>إجمالي الأسئلة: <b id="totalQuestions">0</b> | تمت الإجابة: <b id="answeredCount">0</b></span><span>اسم المستخدم: <b id="examUser"></b></span><span>نوع الأسئلة: <b>متنوعة</b></span></div>
+ <div class="exam-grid">
+  <div class="question-area">
+   <div class="q-title">Question No. <span id="qNumber">1</span></div>
+   <div class="q-text" id="qText"></div>
+   <div id="answerBox"></div>
+   <div class="actions" style="justify-content:space-between"><label class="review-check"><input id="markReview" type="checkbox" onchange="toggleReview()"> Mark for Review</label><button class="next" onclick="saveNext()">Save &amp; Next</button></div>
+  </div>
+  <aside class="side">
+   <div class="muted" style="text-align:center">Time Remaining</div><div class="timer" id="timer">20:00</div>
+   <div class="card" style="padding:10px"><div>User: <b id="sideUser"></b></div><div class="muted">عدد الأسئلة: <b id="sideTotal"></b></div>
+    <div class="legend"><span><i class="dot answered"></i> تمت الإجابة</span><span><i class="dot unanswered"></i> لم تتم الإجابة</span><span><i class="dot notvisited"></i> لم تتم الزيارة</span><span><i class="dot partial"></i> إجابة جزئية</span></div>
+    <div class="qnav" id="qnav"></div>
+   </div>
+   <div class="actions"><button class="soft" onclick="showProfile()">Profile</button><button class="soft" onclick="go('instructions')">Instructions</button><button class="orange" style="width:100%" onclick="confirmEnd()">End Test</button></div>
+  </aside>
+ </div>
+</section>
+
+<section id="result" class="screen"><div class="panel" style="max-width:720px;margin:auto"><div class="brandbar"><span>AJ ZONE</span><span>نتيجة الاختبار</span></div><h2 style="margin-top:20px">تم تسليم الاختبار بنجاح</h2><p id="resultName"></p><div class="result-score" id="resultScore"></div><p class="muted" id="resultNote"></p><div class="actions"><button class="primary" onclick="go('home')">العودة للرئيسية</button></div></div></section>
+
+<section id="admin" class="screen"><div class="panel"><div class="brandbar"><span>AJ ZONE</span><span>لوحة المعلمة</span></div><h2 style="margin-top:20px">إعداد الاختبار وبنك الأسئلة</h2>
+ <div class="grid">
+  <div class="card"><h3>إعدادات الاختبار</h3><label>اسم الاختبار</label><input id="setTitle" value="اختبار تجريبي"><label>عدد الأسئلة في المحاولة</label><input id="setCount" type="number" min="1" value="5"><label>مدة الاختبار بالدقائق</label><input id="setDuration" type="number" min="1" value="20"><div class="actions"><button class="primary" onclick="saveSettings()">حفظ الإعدادات</button></div></div>
+  <div class="card"><h3>إضافة سؤال</h3><label>السؤال</label><textarea id="newQuestion"></textarea><label>نوع السؤال</label><select id="newType" onchange="typeChanged()"><option value="mcq">اختيار من متعدد</option><option value="tf">صح أو غلط</option><option value="essay">مقالي</option></select><div id="mcqFields"><label>الاختيارات (كل اختيار في سطر)</label><textarea id="newOptions" placeholder="الاختيار الأول&#10;الاختيار الثاني&#10;الاختيار الثالث&#10;الاختيار الرابع"></textarea><label>رقم الإجابة الصحيحة (1-4)</label><input id="newCorrect" type="number" min="1" max="4" value="1"></div><div id="tfFields" class="hidden"><label>الإجابة الصحيحة</label><select id="tfCorrect"><option value="true">صح</option><option value="false">غلط</option></select></div><div class="actions"><button class="primary" onclick="addQuestion()">إضافة السؤال</button></div></div>
+ </div>
+ <div class="card" style="margin-top:16px"><h3>بنك الأسئلة</h3><div id="bankList"></div></div>
+ <div class="actions"><button class="soft" onclick="go('home')">العودة للرئيسية</button></div>
+ </div></section>
+</main>
+<script>
+const defaultBank=[
+{id:1,type:'mcq',text:'ما ناتج 6 × 6؟',options:['20','25','30','36'],correct:3},
+{id:2,type:'tf',text:'الشمس نجم.',options:['صح','غلط'],correct:0},
+{id:3,type:'mcq',text:'أيّ مما يلي يُعدّ من الكواكب؟',options:['القمر','المريخ','الشمس','مجرة درب التبانة'],correct:1},
+{id:4,type:'essay',text:'اكتب جملة قصيرة عن أهمية التعلّم.',options:[]},
+{id:5,type:'mcq',text:'كم عدد أيام الأسبوع؟',options:['5','6','7','8'],correct:2},
+{id:6,type:'tf',text:'الماء يتجمد عند درجة صفر مئوية تقريبًا في الظروف المعتادة.',options:['صح','غلط'],correct:0}
+];
+const KEY='ajzone_bank_v2',SET='ajzone_settings_v2';
+let bank=load(KEY,defaultBank),settings=load(SET,{title:'اختبار تجريبي',count:5,duration:20}),student={},questions=[],answers={},visited={},reviews={},idx=0,timerId=null,seconds=1200;
+function load(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch(e){return d}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function go(id){
+ if(id==='login'&&student.id){document.getElementById('loginUser').value=student.id;document.getElementById('loginPassword').value=student.pass}
+ if(id==='confirm'){document.getElementById('confirmName').textContent=student.name;document.getElementById('confirmId').textContent=student.id;document.getElementById('confirmUser').textContent=student.id;document.getElementById('confirmExam').textContent=settings.title}
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)
+}
+function selectExam(){const name=document.getElementById('studentName').value.trim(),id=document.getElementById('studentId').value.trim(),pass=document.getElementById('studentPass').value;if(!name||!id||!pass){alert('من فضلك أدخل الاسم والرقم التعريفي وكلمة المرور التجريبية.');return}student={name,id,pass};document.getElementById('eventTitle').textContent=settings.title;go('select')}
+function validateLogin(){if(document.getElementById('loginPassword').value!==student.pass){alert('كلمة المرور غير صحيحة.');return}if(document.getElementById('captchaInput').value.trim().toUpperCase()!=='AJ42'){alert('رمز التحقق غير صحيح.');return}document.getElementById('instructionExam').textContent=settings.title;document.getElementById('candidateInfo').textContent=`الاسم: ${student.name} — الرقم التعريفي: ${student.id}`;go('instructions')}
+function loginPrefill(){document.getElementById('loginUser').value=student.id;document.getElementById('loginPassword').value=student.pass;document.getElementById('confirmName').textContent=student.name;document.getElementById('confirmId').textContent=student.id;document.getElementById('confirmUser').textContent=student.id;document.getElementById('confirmExam').textContent=settings.title}
+function validateLogin(){if(document.getElementById('loginPassword').value!==student.pass){alert('كلمة المرور غير صحيحة.');return}if(document.getElementById('captchaInput').value.trim().toUpperCase()!=='AJ42'){alert('رمز التحقق غير صحيح.');return}document.getElementById('instructionExam').textContent=settings.title;document.getElementById('candidateInfo').textContent=`الاسم: ${student.name} — الرقم التعريفي: ${student.id}`;go('instructions')}
+function beginExam(){if(!document.getElementById('readyCheck').checked){alert('يرجى تأكيد أنك مستعد للبدء.');return}questions=[...bank].sort(()=>Math.random()-.5).slice(0,Math.min(Number(settings.count)||1,bank.length));if(!questions.length){alert('لا توجد أسئلة في البنك.');return}answers={};visited={};reviews={};idx=0;seconds=(Number(settings.duration)||20)*60;document.getElementById('examTitleBar').textContent=settings.title;document.getElementById('examUser').textContent=student.id;document.getElementById('sideUser').textContent=student.id;document.getElementById('totalQuestions').textContent=questions.length;document.getElementById('sideTotal').textContent=questions.length;go('exam');renderQuestion();updateTimer();clearInterval(timerId);timerId=setInterval(updateTimer,1000)}
+function updateTimer(){let m=Math.floor(seconds/60),s=seconds%60;document.getElementById('timer').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(seconds<=0){clearInterval(timerId);finish(true);return}seconds--}
+function renderQuestion(){const q=questions[idx];visited[q.id]=true;document.getElementById('qNumber').textContent=idx+1;document.getElementById('qText').textContent=q.text;document.getElementById('markReview').checked=!!reviews[q.id];const box=document.getElementById('answerBox');box.innerHTML='';if(q.type==='essay'){const t=document.createElement('textarea');t.placeholder='اكتب إجابتك هنا';t.value=answers[q.id]||'';t.oninput=()=>{answers[q.id]=t.value;renderNav()};box.appendChild(t)}else q.options.forEach((o,i)=>{const lab=document.createElement('label');lab.className='answer';const input=document.createElement('input');input.type='radio';input.name='ans';input.checked=String(answers[q.id])===String(i);input.onchange=()=>{answers[q.id]=i;renderNav()};lab.append(input,document.createTextNode(o));box.appendChild(lab)});renderNav()}
+function status(q){const a=answers[q.id];if(a!==undefined&&a!==''&&a!==null)return 'answered';return visited[q.id]?'unanswered':'notvisited'}
+function renderNav(){const nav=document.getElementById('qnav');nav.innerHTML='';questions.forEach((q,i)=>{const b=document.createElement('button');b.textContent=i+1;b.className=status(q)+(i===idx?' current':'')+(reviews[q.id]?' review':'');b.onclick=()=>{idx=i;renderQuestion()};nav.appendChild(b)});document.getElementById('answeredCount').textContent=questions.filter(q=>status(q)==='answered').length}
+function saveNext(){if(idx<questions.length-1){idx++;renderQuestion()}else{alert('وصلت إلى آخر سؤال. راجع إجاباتك ثم اضغط End Test عند الانتهاء.');renderNav()}}
+function toggleReview(){reviews[questions[idx].id]=document.getElementById('markReview').checked;renderNav()}
+function confirmEnd(){const total=questions.length,done=questions.filter(q=>status(q)==='answered').length;if(confirm(`Confirm End Test\nتمت الإجابة عن ${done} من ${total} أسئلة. هل تريد إنهاء الاختبار؟`)){const p=prompt('أدخل كلمة المرور التجريبية لتأكيد إنهاء الاختبار:');if(p===null)return;if(p!==student.pass){alert('كلمة المرور غير صحيحة.');return}finish(false)}}
+function finish(auto){clearInterval(timerId);let score=0,gradable=0,essay=0;questions.forEach(q=>{if(q.type==='essay'){essay++;return}gradable++;if(Number(answers[q.id])===Number(q.correct))score++});document.getElementById('resultName').textContent=`الطالب: ${student.name}`;document.getElementById('resultScore').textContent=`${score} / ${gradable}`;document.getElementById('resultNote').textContent=essay?`تم تصحيح الأسئلة الموضوعية. يوجد ${essay} سؤال مقالي يحتاج إلى تصحيح يدوي.`:'تم تصحيح الإجابات الموضوعية تلقائيًا.';go('result')}
+function showProfile(){alert(`Candidate Name: ${student.name}\nUsername: ${student.id}`)}
+function openAdmin(){if(document.getElementById('adminPin').value!=='1234'){alert('رمز لوحة المعلمة التجريبي هو 1234.');return}document.getElementById('setTitle').value=settings.title;document.getElementById('setCount').value=settings.count;document.getElementById('setDuration').value=settings.duration;renderBank();go('admin')}
+function saveSettings(){settings={title:document.getElementById('setTitle').value.trim()||'اختبار تجريبي',count:Math.max(1,Number(document.getElementById('setCount').value)||1),duration:Math.max(1,Number(document.getElementById('setDuration').value)||20)};save(SET,settings);alert('تم حفظ إعدادات الاختبار على هذا الجهاز.')}
+function typeChanged(){const t=document.getElementById('newType').value;document.getElementById('mcqFields').classList.toggle('hidden',t!=='mcq');document.getElementById('tfFields').classList.toggle('hidden',t!=='tf')}
+function addQuestion(){const text=document.getElementById('newQuestion').value.trim(),type=document.getElementById('newType').value;if(!text){alert('اكتب نص السؤال أولًا.');return}let q={id:Date.now(),type,text,options:[]};if(type==='mcq'){q.options=document.getElementById('newOptions').value.split('\n').map(x=>x.trim()).filter(Boolean);if(q.options.length<2){alert('أدخل اختيارين على الأقل، كل اختيار في سطر.');return}q.correct=Math.max(0,Math.min(q.options.length-1,Number(document.getElementById('newCorrect').value)-1))}if(type==='tf'){q.options=['صح','غلط'];q.correct=document.getElementById('tfCorrect').value==='true'?0:1}bank.push(q);save(KEY,bank);document.getElementById('newQuestion').value='';document.getElementById('newOptions').value='';renderBank();alert('تمت إضافة السؤال إلى البنك.')}
+function renderBank(){const el=document.getElementById('bankList');if(!bank.length){el.textContent='لا توجد أسئلة.';return}el.innerHTML='<table><thead><tr><th>السؤال</th><th>النوع</th><th>إجراء</th></tr></thead><tbody>'+bank.map(q=>`<tr><td>${escapeHtml(q.text)}</td><td>${q.type==='mcq'?'اختيار من متعدد':q.type==='tf'?'صح أو غلط':'مقالي'}</td><td><button class="orange" onclick="deleteQuestion(${q.id})">حذف</button></td></tr>`).join('')+'</tbody></table>'}
+function deleteQuestion(id){if(confirm('حذف السؤال؟')){bank=bank.filter(q=>q.id!==id);save(KEY,bank);renderBank()}}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+</script>
+</body></html>
